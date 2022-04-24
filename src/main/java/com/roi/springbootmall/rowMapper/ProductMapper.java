@@ -1,5 +1,6 @@
 package com.roi.springbootmall.rowMapper;
 
+import com.roi.springbootmall.constant.ProductCategory;
 import com.roi.springbootmall.model.Product;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -17,7 +18,7 @@ public class ProductMapper implements RowMapper<Product> {
         // 下面的欄位與SQL 的SELECT 欄位要一致，是填DB欄位名稱
         product.setProductId(resultSet.getInt("product_id"));
         product.setProductName(resultSet.getString("product_name"));
-        product.setCategory(resultSet.getString("category"));
+        product.setCategory(ProductCategory.valueOf(resultSet.getString("category")));
         product.setImageUrl(resultSet.getString("image_url"));
         product.setPrice(resultSet.getInt("price"));
         product.setStock(resultSet.getInt("stock"));
