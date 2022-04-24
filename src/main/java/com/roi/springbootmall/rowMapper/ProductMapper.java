@@ -22,7 +22,7 @@ public class ProductMapper implements RowMapper<Product> {
         product.setPrice(resultSet.getInt("price"));
         product.setStock(resultSet.getInt("stock"));
         product.setDescription(resultSet.getString("image_url"));
-        product.setCreatedDate(resultSet.getDate("create_date"));
+        product.setCreatedDate(resultSet.getDate("created_date"));
         product.setLastModifiedDate(resultSet.getDate("last_modified_date"));
 
         //另一種做法，用位數去取值，風險是當SQL的值選出欄位順序調換時 就會取得錯誤的值
