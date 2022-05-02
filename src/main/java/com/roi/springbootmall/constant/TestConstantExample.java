@@ -7,5 +7,7 @@ public class TestConstantExample {
 
         String s =  "FOOD";
         ProductCategory category1 =  ProductCategory.valueOf(s);
+
+        System.currentTimeMillis(); // 取得當前timestamp
     }
 }

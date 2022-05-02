@@ -1,19 +1,28 @@
-package com.roi.springbootmall.model;
+package com.roi.springbootmall.dto;
 
 import com.roi.springbootmall.constant.ProductCategory;
 import lombok.Data;
 
-import java.util.Date;
+
+import javax.validation.constraints.NotNull;
 
 @Data
-public class Product {
-    private int productId;
+public class ProductRequest {
+
+    @NotNull
     private String productName;
+
+    @NotNull
     private ProductCategory category;
+
+    @NotNull
     private String imageUrl;
+
+    @NotNull
     private int price;
+
+    @NotNull
     private int stock;
+
     private String description;
-    private Date createdDate;
-    private Date lastModifiedDate; //Date類型預設使用英國格林威治時區(GMT+0)
 }

@@ -23,9 +23,11 @@ public class ProductMapper implements RowMapper<Product> {
         product.setPrice(resultSet.getInt("price"));
         product.setStock(resultSet.getInt("stock"));
         product.setDescription(resultSet.getString("image_url"));
-        product.setCreatedDate(resultSet.getDate("created_date"));
-        product.setLastModifiedDate(resultSet.getDate("last_modified_date"));
+        product.setCreatedDate(resultSet.getTimestamp("created_date"));
+        product.setLastModifiedDate(resultSet.getTimestamp("last_modified_date"));
 
+        System.out.println(resultSet.getDate("last_modified_date").getClass().getSimpleName());
+        System.out.println(product.getLastModifiedDate());
         //另一種做法，用位數去取值，風險是當SQL的值選出欄位順序調換時 就會取得錯誤的值
 //        student.setId(resultSet.getInt(1)); //取得SELECT SQL中第一個值，這裡指的是id
 
