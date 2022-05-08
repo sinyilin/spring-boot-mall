@@ -42,4 +42,30 @@ public class ProductController {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(product);
     }
+
+    @Operation(summary = "更新單一產品資訊")
+    @PutMapping("/{productId}")
+    public ResponseEntity<Product> updateProduct (@PathVariable Integer productId ,
+            @RequestBody @Valid ProductRequest productRequest){
+        
+        // 檢查product 是否存在
+        Product product  = productService.getProductById(productId);
+        if (product == null){
+            return  ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+        
+        productService.updateProduct(productId, productRequest);
+        product  = productService.getProductById(productId);
+        return ResponseEntity.status(HttpStatus.OK).body(product);
+
+    }
+
+    @Operation(summary = "刪除單一產品資訊")
+    @DeleteMapping("/{productId}")
+    public ResponseEntity<?> deleteProduct (@PathVariable Integer productId){
+        productService.deleteProductById(productId);
+
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); //204
+
+    }
 }
