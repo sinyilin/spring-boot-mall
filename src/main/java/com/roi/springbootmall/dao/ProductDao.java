@@ -3,6 +3,8 @@ package com.roi.springbootmall.dao;
 import com.roi.springbootmall.dto.ProductRequest;
 import com.roi.springbootmall.model.Product;
 
+import java.util.List;
+
 public interface ProductDao {
 
     Product getProductById (Integer productId);
@@ -12,4 +14,6 @@ public interface ProductDao {
     void updateProduct(Integer productId, ProductRequest productRequest);
 
     void deleteById(Integer productId);
+
+    List<Product> getProducts();
 }

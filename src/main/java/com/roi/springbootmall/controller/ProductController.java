@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 @RestController
@@ -21,8 +22,17 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+
+    @GetMapping("products")
+    public ResponseEntity<List<Product>> getProductList(){
+        List<Product> productList = productService.getProducts();
+        return ResponseEntity.status(HttpStatus.OK).body(productList);
+    }
+
+
+
     @Operation(summary = "查詢單一產品資訊")
-    @GetMapping("/getProduct/{productId}")
+    @GetMapping("/product/{productId}")
     public ResponseEntity<Product> getProductById (@PathVariable Integer productId){
         Product product  = productService.getProductById(productId);
         System.out.println(product.getLastModifiedDate());
@@ -34,7 +44,7 @@ public class ProductController {
     }
 
     @Operation(summary = "新增單一產品資訊")
-    @PostMapping("/createProduct")
+    @PostMapping("/product")
     public ResponseEntity<Product> createProduct (@RequestBody  @Valid ProductRequest productRequest){
         Integer productId = productService.createProduct(productRequest);
 
