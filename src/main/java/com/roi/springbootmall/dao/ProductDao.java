@@ -1,5 +1,6 @@
 package com.roi.springbootmall.dao;
 
+import com.roi.springbootmall.constant.ProductCategory;
 import com.roi.springbootmall.dto.ProductRequest;
 import com.roi.springbootmall.model.Product;
 
@@ -15,5 +16,5 @@ public interface ProductDao {
 
     void deleteById(Integer productId);
 
-    List<Product> getProducts();
+    List<Product> getProducts(ProductCategory category, String search);
 }
